@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aparna Srivastava — AI/ML Student</title>
+  <meta name="description" content="Portfolio of Aparna Srivastava, third-year B.Tech CSE (AI & ML) student and aspiring AI/ML engineer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #14110e;
+      --bg-2: #1a1612;
+      --card: #1e1a15;
+      --line: #3a3128;
+      --ink: #e9e0cf;
+      --muted: #a09580;
+      --brass: #c4a46a;
+      --olive: #8f9c64;
+      --rust: #b9774f;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --max: 1040px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    /* faint grid + candlelight glow */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(900px 520px at 78% -8%, rgba(196,164,106,.14), transparent 70%),
+        linear-gradient(rgba(233,224,207,.035) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(90deg, rgba(233,224,207,.035) 1px, transparent 1px) 0 0 / 44px 44px,
+        var(--bg);
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--brass); color: var(--bg); padding: 8px 14px; border-radius: 6px; z-index: 100; }
+    .skip:focus { left: 8px; }
+    :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+    ::selection { background: rgba(196,164,106,.35); }
+
+    .mono { font-family: var(--mono); }
+
+    /* Nav */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(20,17,14,.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    .brand { font-family: var(--mono); font-size: .9rem; text-decoration: none; color: var(--brass); }
+    .brand span { color: var(--muted); }
+    .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+    .nav ul a { font-family: var(--mono); font-size: .78rem; text-decoration: none; color: var(--muted); transition: color .2s; }
+    .nav ul a b { color: var(--olive); font-weight: 400; margin-right: 4px; }
+    .nav ul a:hover { color: var(--brass); }
+
+    /* Hero */
+    .hero { padding: 84px 0 76px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+    .eyebrow { font-family: var(--mono); font-size: .78rem; color: var(--olive); margin: 0 0 18px; }
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.8rem, 7vw, 4.8rem); line-height: 1.02; margin: 0 0 20px; letter-spacing: -.01em; }
+    h1 em { color: var(--brass); font-style: italic; }
+    .lede { max-width: 560px; font-size: 1.05rem; color: var(--muted); margin: 0 0 30px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 6px;
+      font-family: var(--mono); font-size: .82rem; text-decoration: none;
+      border: 1px solid var(--brass); transition: all .2s; cursor: pointer; background: transparent; color: var(--brass);
+    }
+    .btn.primary { background: var(--brass); color: var(--bg); font-weight: 500; }
+    .btn.primary:hover { background: #d4b67c; }
+    .btn.ghost:hover { background: rgba(196,164,106,.1); }
+
+    /* Terminal */
+    .term {
+      background: #100d0b; border: 1px solid var(--line); border-radius: 10px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 1px rgba(196,164,106,.05);
+      font-family: var(--mono); font-size: .82rem; overflow: hidden;
+    }
+    .bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: #17130f; }
+    .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; }
+    .bar i:nth-child(1) { background: #8a4b38; }
+    .bar i:nth-child(2) { background: #8f7a45; }
+    .bar i:nth-child(3) { background: #66723f; }
+    .bar span { margin-left: 8px; color: var(--muted); font-size: .72rem; }
+    .term pre { margin: 0; padding: 18px 18px 20px; white-space: pre-wrap; line-height: 1.75; color: var(--ink); }
+    .term .p { color: var(--olive); }
+    .term .c { color: var(--brass); }
+    .term .d { color: var(--muted); }
+    .term .ln { display: block; opacity: 0; animation: show .01s forwards; }
+    .term .ln:nth-child(1) { animation-delay: .3s; }
+    .term .ln:nth-child(2) { animation-delay: .8s; }
+    .term .ln:nth-child(3) { animation-delay: 1.3s; }
+    .term .ln:nth-child(4) { animation-delay: 1.8s; }
+    .term .ln:nth-child(5) { animation-delay: 2.3s; }
+    .term .ln:nth-child(6) { animation-delay: 2.8s; }
+    .term .ln:nth-child(7) { animation-delay: 3.3s; }
+    @keyframes show { to { opacity: 1; } }
+    .cursor { display: inline-block; width: 8px; height: 1em; background: var(--brass); vertical-align: -2px; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .sec-head { margin-bottom: 36px; }
+    .sec-head .tag { font-family: var(--mono); font-size: .78rem; color: var(--olive); display: block; margin-bottom: 6px; }
+    h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 4.5vw, 2.8rem); margin: 0; line-height: 1.1; }
+    h2 .num { color: var(--brass); font-style: italic; margin-right: 10px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; margin: 0 0 6px; line-height: 1.2; }
+
+    /* About / Education */
+    .two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+    .about p { margin: 0 0 16px; color: #d3c9b6; }
+    .about p:first-child::first-letter {
+      font-family: var(--serif); font-size: 3.4rem; line-height: .8; float: left;
+      padding: 6px 10px 0 0; color: var(--brass);
+    }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+    .card h3 { font-size: 1.3rem; }
+    .meta { font-family: var(--mono); font-size: .76rem; color: var(--muted); margin: 0 0 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+    .tags li {
+      font-family: var(--mono); font-size: .74rem; padding: 3px 10px;
+      border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: #cfc4ad;
+    }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+    .skills .card { transition: border-color .2s; }
+    .skills .card:hover { border-color: var(--brass); }
+    .skills .card h3 { font-size: 1.2rem; margin-bottom: 4px; }
+    .level { font-family: var(--mono); font-size: .72rem; color: var(--olive); margin: 0 0 14px; }
+    .level::before { content: "// "; opacity: .7; }
+
+    /* Projects */
+    .projects { display: grid; gap: 24px; }
+    .project {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .project:hover { border-color: var(--brass); transform: translateY(-2px); }
+    .project .bar span { margin-left: 8px; }
+    .project .body { padding: 26px 28px 28px; }
+    .project-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+    .project-top .rn { font-family: var(--serif); font-style: italic; color: var(--brass); font-size: 1.3rem; }
+    .status { font-family: var(--mono); font-size: .72rem; padding: 2px 10px; border-radius: 4px; border: 1px solid; }
+    .status.live { color: var(--olive); border-color: rgba(143,156,100,.5); background: rgba(143,156,100,.08); }
+    .status.wip { color: var(--rust); border-color: rgba(185,119,79,.5); background: rgba(185,119,79,.08); }
+    .project p { margin: 0 0 14px; color: #d3c9b6; }
+    .project .role { font-family: var(--mono); font-size: .76rem; color: var(--muted); }
+    .link { font-family: var(--mono); font-size: .84rem; color: var(--brass); text-decoration: none; border-bottom: 1px solid rgba(196,164,106,.4); }
+    .link:hover { color: #d9bf86; }
+    .note { font-family: var(--mono); font-size: .78rem; color: var(--muted); margin-top: 4px; }
+    .note::before { content: "// "; color: var(--olive); }
+
+    /* Learning */
+    .learning { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .journal { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+    .journal li { padding-left: 26px; position: relative; color: #d3c9b6; }
+    .journal li::before { content: "›"; position: absolute; left: 4px; color: var(--brass); font-family: var(--mono); }
+    .journal strong { color: var(--ink); font-weight: 600; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact p { max-width: 520px; margin: 0 auto 28px; color: var(--muted); }
+    .contact .cta { justify-content: center; }
+    .toast { font-family: var(--mono); min-height: 1.5em; font-size: .8rem; color: var(--olive); margin-top: 14px; }
+    footer { padding: 26px 0 40px; text-align: center; color: var(--muted); font-family: var(--mono); font-size: .76rem; border-top: 1px solid var(--line); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .project:hover { transform: none; }
+      .term .ln { opacity: 1; animation: none; }
+      .cursor { animation: none; }
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 720px) {
+      .nav ul { gap: 14px; }
+      .nav ul li:nth-child(n+4) { display: none; }
+      .hero { padding: 60px 0 52px; }
+      section { padding: 56px 0; }
+      .two { grid-template-columns: 1fr; gap: 28px; }
+      .project .body { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top">aparna<span>@</span>portfolio</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about"><b>01</b>about</a></li>
+          <li><a href="#skills"><b>02</b>skills</a></li>
+          <li><a href="#projects"><b>03</b>projects</a></li>
+          <li><a href="#learning"><b>04</b>learning</a></li>
+          <li><a href="#contact"><b>05</b>contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">// B.Tech CSE · AI &amp; ML · third year</p>
+          <h1>Building thoughtful software, <em>one chapter at a time.</em></h1>
+          <p class="lede">I'm Aparna, an aspiring AI/ML engineer. I enjoy turning problems into practical software and intelligent systems, and I'm strengthening my foundations in Python, machine learning, and backend development.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">view projects</a>
+            <a class="btn ghost" href="https://github.com/Aparnasrivastava6" target="_blank" rel="noopener">github ↗</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/aparna-srivastava-843656348/" target="_blank" rel="noopener">linkedin ↗</a>
+          </div>
+        </div>
+
+        <div class="term reveal" aria-label="Terminal introduction">
+          <div class="bar"><i></i><i></i><i></i><span>~/aparna — zsh</span></div>
+<pre><span class="ln"><span class="p">$</span> <span class="c">whoami</span></span>
+<span class="ln">Aparna Srivastava</span>
+<span class="ln"><span class="p">$</span> <span class="c">cat focus.txt</span></span>
+<span class="ln"><span class="d">python · ml · backend · nlp</span></span>
+<span class="ln"><span class="p">$</span> <span class="c">status --seeking</span></span>
+<span class="ln"><span class="d">software dev / ai-ml internships</span></span>
+<span class="ln"><span class="p">$</span> <span class="cursor"></span></span></pre>
+        </div>
+      </div>
+    </div>
+    <hr class="rule">
+
+    <section id="about">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="tag">// 01 about</span><h2><span class="num">i.</span>About &amp; Education</h2></div>
+        <div class="two">
+          <div class="about reveal">
+            <p>I'm a Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning. I'm passionate about building practical software and intelligent systems, and I like projects where careful problem-solving meets a real use.</p>
+            <p>Right now I'm looking for software development or AI/ML internships where I can gain industry experience and keep growing a technical portfolio I'm proud of.</p>
+          </div>
+          <div class="card reveal">
+            <h3>B.Tech, Computer Science &amp; Engineering</h3>
+            <p class="meta">specialization: AI &amp; ML · year: third</p>
+            <p class="meta" style="margin-bottom:8px;">coursework</p>
+            <ul class="tags">
+              <li>Python</li><li>DSA</li><li>OOP</li><li>DBMS</li>
+              <li>Computer Organization</li><li>Mathematics</li><li>Intro AI &amp; ML</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="rule">
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="tag">// 02 skills</span><h2><span class="num">ii.</span>Skills</h2></div>
+        <div class="skills">
+          <div class="card reveal">
+            <h3>Programming</h3>
+            <p class="level">developing proficiency</p>
+            <ul class="tags"><li>Python</li><li>C</li><li>Java</li></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Backend</h3>
+            <p class="level">practical project experience</p>
+            <ul class="tags"><li>FastAPI</li><li>REST APIs</li><li>SQLAlchemy</li><li>Pydantic</li></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Data &amp; Machine Learning</h3>
+            <p class="level">learning &amp; experimenting</p>
+            <ul class="tags"><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>TF-IDF</li><li>Intro NLP</li><li>Recommenders</li></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Databases</h3>
+            <p class="level">fundamentals</p>
+            <ul class="tags"><li>SQLite</li><li>SQL</li><li>Database design</li></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Web</h3>
+            <p class="level">foundational</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+          <div class="card reveal">
+            <h3>Tools</h3>
+            <p class="level">everyday use</p>
+            <ul class="tags"><li>Git</li><li>GitHub</li><li>venv</li><li>Command line</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="rule">
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="tag">// 03 projects</span><h2><span class="num">iii.</span>Featured Projects</h2></div>
+        <div class="projects">
+
+          <article class="project reveal">
+            <div class="bar"><i></i><i></i><i></i><span>roamly/README.md</span></div>
+            <div class="body">
+              <div class="project-top"><span class="rn">I.</span><h3>Roamly</h3><span class="status live">published</span></div>
+              <p><strong>A travel planner backend.</strong> It organizes destination and place information, stores data in a database, exposes REST endpoints, and integrates external travel and stay data. A content-based recommendation prototype was also explored.</p>
+              <ul class="tags" style="margin-bottom:14px;"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>SQLite</li><li>Pydantic</li><li>REST APIs</li></ul>
+              <p class="role">role: individual project</p>
+              <a class="link" href="https://github.com/Aparnasrivastava6/roamly" target="_blank" rel="noopener">view repository →</a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="bar"><i></i><i></i><i></i><span>epilogue/notes.md</span></div>
+            <div class="body">
+              <div class="project-top"><span class="rn">II.</span><h3>Epilogue</h3><span class="status wip">in progress</span></div>
+              <p><strong>An NLP-powered book discovery system.</strong> It aims to help readers find books from descriptions, genres, and reading preferences, with ideas for tracking books to read, currently reading, and set aside.</p>
+              <ul class="tags" style="margin-bottom:14px;"><li>Python</li><li>pandas</li><li>NLP</li><li>scikit-learn</li><li>TF-IDF</li></ul>
+              <p class="role">role: individual project</p>
+              <p class="note">investigating dataset quality and recommendation relevance</p>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="bar"><i></i><i></i><i></i><span>gestura-isl/notes.md</span></div>
+            <div class="body">
+              <div class="project-top"><span class="rn">III.</span><h3>Gestura ISL</h3><span class="status wip">in progress</span></div>
+              <p><strong>Indian Sign Language gesture recognition.</strong> A computer vision project exploring how visual gesture recognition could make communication more accessible.</p>
+              <ul class="tags" style="margin-bottom:14px;"><li>Python</li><li>Computer vision</li><li>Machine learning</li></ul>
+              <p class="role">role: individual project</p>
+              <p class="note">verifying the dataset and working through data-handling foundations</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="learning" class="learning">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="tag">// 04 learning</span><h2><span class="num">iv.</span>Currently Learning</h2></div>
+        <ul class="journal reveal">
+          <li><strong>Recommendation systems.</strong> Working out why text similarity alone doesn't always give relevant results, and how dataset quality shapes them.</li>
+          <li><strong>Computer vision for gestures.</strong> Verifying datasets and building solid Python data-handling habits before modeling.</li>
+          <li><strong>Backend craft.</strong> Cleaner API design, data models, and structure in FastAPI projects.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="tag">// 05 contact</span><h2><span class="num">v.</span>Say hello</h2></div>
+        <p class="reveal">I'm open to software development and AI/ML internship opportunities. The best way to reach me is by email.</p>
+        <div class="cta reveal">
+          <a class="btn primary" href="mailto:srivastavaaparna180@gmail.com">email me</a>
+          <button class="btn ghost" type="button" id="copy">copy address</button>
+          <a class="btn ghost" href="https://www.linkedin.com/in/aparna-srivastava-843656348/" target="_blank" rel="noopener">linkedin ↗</a>
+        </div>
+        <p class="toast" id="toast" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="yr"></span> Aparna Srivastava · built by hand with HTML, CSS &amp; JS</div>
+  </footer>
+
+  <script>
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    // Fade-in on scroll
+    const items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach((el) => io.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add("in"));
+    }
+
+    // Copy email
+    const toast = document.getElementById("toast");
+    document.getElementById("copy").addEventListener("click", async () => {
+      const email = "srivastavaaparna180@gmail.com";
+      try {
+        await navigator.clipboard.writeText(email);
+        toast.textContent = "> email address copied";
+      } catch (err) {
+        toast.textContent = email;
+      }
+      setTimeout(() => (toast.textContent = ""), 3000);
+    });
+  </script>
+</body>
+</html>
